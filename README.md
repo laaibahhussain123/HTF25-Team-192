@@ -5,7 +5,7 @@ Read me
 
 **Team:** [Chefly]  
 **Project type:** No-code prototype (Glide) + Automation (Make.com) + AI  
-**Hackathon:** [Hackathon name]  
+**Hackathon:** CBIT Hacktober fest 
 **Submitted by:** [Laaibah , Rabia , himaja , Haacni]
 
 ---
@@ -58,8 +58,6 @@ We prioritized building a **working prototype with a complete data flow** within
 
 ---
 
-## Team & roles
-(See team_roles.txt for exact responsibilities.)
 
 ---
 
@@ -74,4 +72,4 @@ See `future_work.txt` for next steps. Highlights:
 
 ## Contact
 For questions, demos, or to see the full flow live, contact:
-- [Name], [email or slack handle]
+- Laaibah laaibahuhussain34@gmail.com
