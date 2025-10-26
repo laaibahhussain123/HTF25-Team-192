@@ -1,68 +1,77 @@
-﻿# HTF25-Team-192
+# HTF25-Team-192
 
-## GitHub submission guide
+Read me
+# Chefly — Instant Recipe Generator (Hackathon Submission)
 
-In this Readme, you will find a guide on how to fork this Repository, add files to it, and make a pull request to contribute your changes.
+**Team:** [Chefly]  
+**Project type:** No-code prototype (Glide) + Automation (Make.com) + AI  
+**Hackathon:** [Hackathon name]  
+**Submitted by:** [Laaibah , Rabia , himaja , Haacni]
 
-<details open>
-<summary><h3>1. Login to your GitHub Account</h3></summary>
-<br>
-<p>Go to <a href="https://github.com">github.com</a> to log in.</p>
-<ul>
-   <li>Open the <a href="https://github.com/cbitosc/HTF25-Team-192">current repo</a> in a new tab.</li>
-   <li>Perform all operations in the newly opened tab, and follow the current tab for instructions.</li>
-</ul>
-</details>
+---
 
-<details open>
-<summary><h3>2. Fork the Repository</h3></summary>
-<br>
-<p align="center">
-  <img src="fork.jpeg" alt="Fork the Repository" height="300">
-</p>
-<ul>
- <li>In the newly opened tab, on the top-right corner, click on <b>Fork</b>.</li>
- <li>Enter the <b>Repository Name</b> as <b>HTF25-Team-192</b>.</li>
- <li>Then click <b>Create Fork</b>, leaving all other fields as default.</li>
- <li>After a few moments, you can view your forked repo.</li>
-</ul>
-</details>
+## Live demo
+Glide app link (live): see `https://chefly.glide.page` in this repo.
 
-<details open>
-<summary><h3>3. Clone your Repository</h3></summary>
-<br>
-<ul>
- <li>Click on <b>Code</b> and copy the <b>web URL</b> of your forked repository.</li>
- <li>Open terminal on your local machine.</li>
- <li>Run this command to clone the repo:</li>
-<pre><code>git clone https://github.com/your-username/HTF25-Team-192.git</code></pre>
-</ul>
-</details>
+---
 
-<details open>
-<summary><h3>4. Adding files to the Repository</h3></summary>
-<br>
-<ul>
- <li>While doing it for the first time, create a new branch for your changes:</li>
-<pre><code>git checkout -b branch-name</code></pre>
- <li>Add files or modify existing ones.</li>
- <li>Stage your changes:</li>
-<pre><code>git add .</code></pre>
- <li>Commit your changes:</li>
-<pre><code>git commit -m "Descriptive commit message"</code></pre>
- <li>Push your branch to your fork:</li>
-<pre><code>git push origin branch-name</code></pre>
-</ul>
-</details>
+## Summary
+Chefly helps users turn available ingredients (typed or photographed) into quick, tasty recipes. Users submit ingredients via a simple mobile interface (Glide). Submissions are stored in a Google Sheet that Make.com watches; Make.com sends ingredient data to an AI recipe generator and writes back the suggested recipes. The Glide app displays those recipes with steps, calories, and substitutions.
 
-<details open>
-<summary><h3>5. Create a Pull Request</h3></summary>
-<br>
-<ul>
- <li>Click on the <b>Contribute</b> button in your fork and choose <b>Open Pull Request</b>.</li>
- <li>Leave all fields as default, then click <b>Create Pull Request</b>.</li>
- <li>Wait a few moments; your PR is now submitted.</li>
-</ul>
-</details>
+---
 
-## Thanks for participating!
+## Why we chose no-code
+We prioritized building a **working prototype with a complete data flow** within the hackathon timeframe. Glide allowed us to quickly create a polished mobile UI; Google Sheets served as a shared data store; Make.com handled automation and API calls to the AI. This allowed us to demonstrate UX, logic, and AI integration end-to-end.
+
+---
+
+## Architecture (brief)
+1. Glide UI (mobile) — user enters ingredients or uploads an image → writes row to Google Sheet.
+2. Google Sheet — acts as the primary data bridge (rows: ingredients, image URL, timestamp).
+3. Make.com — watches the sheet; when a new row appears, it:
+   - If text ingredients: send to AI recipe API.
+   - If image: send image URL to vision model → extract ingredients → send to AI.
+   - Writes recipe name, ingredients list, steps, calories back to Google Sheet (or a separate sheet).
+4. Glide reads the sheet(s) and shows recipes to the user.
+
+(See `architecture.png` for visual diagram.)
+
+---
+
+## How to run / reproduce
+1. Open the Glide app link in `APP_LINK.txt`.
+2. Sign-in if required (we use "Public with email" for demo).
+3. On **Upload** tab: type ingredients or upload an ingredient photo → Submit.
+4. The Google Sheet connected is: `google_sheet_template.csv` (sample format).
+5. Make.com scenario (export/screenshot in repo) shows modules used: Google Sheets watch, HTTP request to AI, Google Sheets update.
+
+---
+
+## Files in this repo
+- `APP_LINK.txt` — public Glide link
+- `google_sheet_template.csv` — sheet headers and sample rows
+- `make_scenario_export.json` — Make.com export or a screenshot if JSON not available
+- `screenshots/` — in-app screenshots (home, upload form, recipes list, recipe card)
+- `architecture.png` — simple diagram of the flow
+- `team_roles.txt` — who built what
+- `future_work.txt` — planned improvements
+
+---
+
+## Team & roles
+(See team_roles.txt for exact responsibilities.)
+
+---
+
+## Future work and scaling
+See `future_work.txt` for next steps. Highlights:
+- Replace Glide → React Native + backend for full control and code repository
+- Deploy a single backend to host AI integration (instead of Make.com)
+- Improve image recognition accuracy and provide ingredient confidence scores
+- Offline caching & push notifications
+
+---
+
+## Contact
+For questions, demos, or to see the full flow live, contact:
+- [Name], [email or slack handle]
